@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0a0010">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HBD Manasa">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="Happy Birthday Manasa - A special birthday surprise">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>🎂 Happy Birthday Manasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700;900&family=Sacramento&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PRELOADER / HEART ANIMATION -->
+<div id="heart-loader">
+  <canvas id="heart-canvas"></canvas>
+  <div id="heart-percent">0%</div>
+  <div id="heart-text">Loading something special...</div>
+</div>
+
+<!-- FLOATING HEARTS BACKGROUND (persistent) -->
+<canvas id="bg-hearts"></canvas>
+
+<!-- SCREEN 1: INTRO -->
+<div id="s-intro" class="screen hidden">
+  <div class="intro-particles" id="intro-particles"></div>
+  <div class="screen-inner">
+    <div class="intro-content">
+      <div class="intro-date">May 4th, 2026</div>
+      <div class="intro-hey">Hey Manasa <span class="p-emoji">✨</span></div>
+      <div class="intro-sub">I made something for your birthday...</div>
+      <div class="intro-sub2">( don't judge me okay <span class="p-emoji">😅</span> )</div>
+      <button class="btn-love" id="btn-start" onclick="goToStory()">
+        <span class="btn-heart">🎁</span> Open Your Surprise
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 2: THE STORY (Comedy) -->
+<div id="s-story" class="screen hidden">
+  <div class="screen-inner">
+    <div class="story-wrap">
+      <div class="story-title">A Short Story <span class="p-emoji">😂</span></div>
+      <div class="story-subtitle">— based on true (embarrassing) events —</div>
+      
+      <div class="story-timeline" id="story-timeline">
+        <div class="story-card sc-1">
+          <div class="sc-emoji">🥺</div>
+          <div class="sc-chapter">Chapter 1: The Bold Move</div>
+          <div class="sc-text">One guy gathered all his courage... rehearsed 47 times in the mirror... and told her how he felt 💍</div>
+        </div>
+        <div class="story-card sc-2">
+          <div class="sc-emoji">😐</div>
+          <div class="sc-chapter">Chapter 2: The Verdict</div>
+          <div class="sc-text">"I have NO interest in you"<br><span class="sc-small">— said with zero hesitation, absolute clarity, full confidence 💀</span></div>
+        </div>
+        <div class="story-card sc-3">
+          <div class="sc-emoji">💀</div>
+          <div class="sc-chapter">Chapter 3: The Aftermath</div>
+          <div class="sc-text">Left the chat. Left the building. Almost left the country. 🏃‍♂️💨</div>
+        </div>
+        <div class="story-card sc-4">
+          <div class="sc-emoji">🤡</div>
+          <div class="sc-chapter">Chapter 4: Plot Twist</div>
+          <div class="sc-text">But here he is... STILL making a whole birthday website for her 😭<br><span class="sc-small">friendship level? over 9000. clown behavior? also yes. 🎪</span></div>
+        </div>
+        <div class="story-card sc-5">
+          <div class="sc-emoji">😌</div>
+          <div class="sc-chapter">Chapter 5: The Moral</div>
+          <div class="sc-text">She rejected the proposal, but his coding skills? <span class="highlight-pink">UNREJECTABLE</span> 💅<br><span class="sc-small">( a friend this dedicated? rare species. appreciate it 😤 )</span></div>
+        </div>
+      </div>
+      
+      <button class="btn-love" onclick="goToTraits()">
+        <span class="btn-heart">✨</span> See What Makes You Special
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 3: TRAITS -->
+<div id="s-traits" class="screen hidden">
+  <div class="screen-inner">
+    <div class="traits-wrap">
+      <div class="traits-title">Why You're <span class="gradient-text">Amazing</span></div>
+      <div class="traits-subtitle">( scientifically proven, don't argue )</div>
+      
+      <div class="traits-grid" id="traits-grid">
+        <div class="trait-card" style="--delay:0.1s">
+          <div class="trait-icon">🌟</div>
+          <div class="trait-name">Your Smile</div>
+          <div class="trait-desc">Can light up any room. Even the ones with no electricity. Tested. ✓</div>
+          <div class="trait-bar"><div class="trait-fill" data-width="100"></div></div>
+        </div>
+        <div class="trait-card" style="--delay:0.2s">
+          <div class="trait-icon">💁‍♀️</div>
+          <div class="trait-name">Attitude Level</div>
+          <div class="trait-desc">Off the charts. She walks in and everyone else becomes a background character.</div>
+          <div class="trait-bar"><div class="trait-fill" data-width="95"></div></div>
+        </div>
+        <div class="trait-card" style="--delay:0.3s">
+          <div class="trait-icon">🧠</div>
+          <div class="trait-name">Intelligence</div>
+          <div class="trait-desc">Smart enough to see through everyone's nonsense. GENIUS level confirmed.</div>
+          <div class="trait-bar"><div class="trait-fill" data-width="99"></div></div>
+        </div>
+        <div class="trait-card" style="--delay:0.4s">
+          <div class="trait-icon">💛</div>
+          <div class="trait-name">Heart</div>
+          <div class="trait-desc">Pure gold inside. Even if she acts tough. We all know the truth.</div>
+          <div class="trait-bar"><div class="trait-fill" data-width="100"></div></div>
+        </div>
+        <div class="trait-card" style="--delay:0.5s">
+          <div class="trait-icon">✨</div>
+          <div class="trait-name">Vibe</div>
+          <div class="trait-desc">Main character energy. The universe literally revolves around her.</div>
+          <div class="trait-bar"><div class="trait-fill" data-width="97"></div></div>
+        </div>
+        <div class="trait-card" style="--delay:0.6s">
+          <div class="trait-icon">👑</div>
+          <div class="trait-name">Overall Rating</div>
+          <div class="trait-desc">10/10. No notes. The world doesn't deserve her but here we are.</div>
+          <div class="trait-bar"><div class="trait-fill" data-width="100"></div></div>
+        </div>
+      </div>
+      
+      <button class="btn-love" onclick="goToWish()">
+        <span class="btn-heart">🎂</span> See Your Birthday Wish
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 4: THE BIG WISH -->
+<div id="s-wish" class="screen hidden">
+  <canvas id="fireworks-canvas"></canvas>
+  <div class="screen-inner">
+    <div class="wish-wrap">
+      <div class="wish-main">
+        <div class="wish-happy" id="w-happy">HAPPY</div>
+        <div class="wish-birthday" id="w-birthday">BIRTHDAY</div>
+        <div class="wish-name" id="w-name">Manasa <span class="p-emoji">🌹</span></div>
+        <div class="wish-age" id="w-age">
+          <span class="age-number">🎉</span>
+        </div>
+      </div>
+      <div class="wish-msg" id="wish-msg">
+        <p>Look… you already know the backstory <span class="p-emoji">😂</span></p>
+        <p>But that doesn't change the fact that you deserve the <span class="highlight-gold">happiest birthday ever</span>.</p>
+        <p>You deserve all the happiness, success, good vibes, and every beautiful thing this world has to offer. <span class="p-emoji">🌸</span></p>
+        <p>Keep being the <span class="highlight-pink">incredible person</span> you are.</p>
+        <p class="wish-sign">— From a friend who went way too extra<br>but has zero regrets about it <span class="p-emoji">😌</span></p>
+      </div>
+      <div class="wish-footer" id="wish-footer">
+        <div class="wish-code">// happy_birthday("Manasa"); ✨</div>
+        <div class="wish-date">May 4th, 2026 • Made with ☕ & questionable life choices</div>
+      </div>
+      <button class="btn-love btn-replay" id="btn-replay" onclick="replay()">
+        <span class="btn-heart">🔄</span> Replay The Whole Thing
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
