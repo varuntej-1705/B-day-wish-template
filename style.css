@@ -192,33 +192,37 @@ body {
 .btn-love {
   display: inline-flex; align-items: center; gap: .7rem;
   font-family: 'Poppins', sans-serif;
-  font-size: .9rem;
-  font-weight: 600;
+  font-size: .95rem;
+  font-weight: 700;
   color: var(--white);
-  background: linear-gradient(135deg, var(--pink), var(--purple));
+  background: linear-gradient(135deg, var(--pink), var(--purple), var(--pink-light));
+  background-size: 200% auto;
   border: none; border-radius: 50px;
-  padding: .85rem 2rem;
+  padding: 1rem 2.5rem;
   cursor: pointer;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   position: relative; overflow: hidden;
-  transition: all .4s ease;
-  box-shadow: 0 6px 28px rgba(255,45,117,.3);
-  animation: fadeInUp .8s ease 1.2s both;
+  transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(255,45,117,.4), 0 0 20px rgba(255,45,117,.2);
+  animation: fadeInUp .8s ease 1.2s both, pulseBtn 2s infinite;
   z-index: 5;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-.btn-love::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,.2), transparent, rgba(255,255,255,.1));
-  transform: translateX(-100%);
-  transition: transform .5s ease;
+@keyframes pulseBtn {
+  0% { box-shadow: 0 10px 30px rgba(255,45,117,.4); }
+  50% { box-shadow: 0 10px 50px rgba(255,45,117,.7), 0 0 30px var(--pink-glow); }
+  100% { box-shadow: 0 10px 30px rgba(255,45,117,.4); }
 }
 .btn-love:active {
-  transform: scale(.96);
-  box-shadow: 0 4px 20px rgba(255,45,117,.5);
+  transform: scale(.92);
 }
-.btn-love:active::before { transform: translateX(100%); }
+.btn-love:hover {
+  background-position: right center;
+  transform: translateY(-3px);
+}
 .btn-heart {
   font-size: 1.3rem;
   filter: drop-shadow(0 0 6px var(--pink-glow));
@@ -260,26 +264,30 @@ body {
 }
 
 .story-card {
-  background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 14px;
-  padding: 1.2rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem 1.2rem;
   text-align: center;
-  opacity: 0; transform: translateY(25px);
-  transition: all .5s ease;
+  opacity: 0; transform: translateY(30px) scale(0.95);
+  transition: all .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 }
 .story-card.visible {
   opacity: 1; transform: none;
 }
-.story-card::before {
-  content: '';
-  position: absolute; inset: -1px;
-  border-radius: 15px;
-  background: linear-gradient(135deg, var(--pink), var(--purple), var(--gold));
-  z-index: -1; opacity: .15;
+.story-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--pink);
+  background: rgba(255, 255, 255, 0.08);
 }
+.sc-1 { border-left: 4px solid var(--pink); }
+.sc-2 { border-left: 4px solid var(--red); }
+.sc-3 { border-left: 4px solid var(--purple); }
+.sc-4 { border-left: 4px solid var(--gold); }
+.sc-5 { border-left: 4px solid var(--pink-light); }
 
 .sc-emoji {
   font-size: 2.5rem;
@@ -356,64 +364,39 @@ body {
 }
 
 .trait-card {
-  background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 14px;
-  padding: 1rem .8rem;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.2rem 1rem;
   text-align: center;
-  opacity: 0; transform: translateY(18px);
-  transition: all .5s ease;
+  opacity: 0; transform: translateY(20px);
+  transition: all .6s ease;
   transition-delay: var(--delay, 0s);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 .trait-card.visible {
   opacity: 1; transform: none;
 }
-.trait-card::after {
-  content: '';
-  position: absolute; top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle at center, rgba(255,45,117,.06) 0%, transparent 60%);
-  animation: rotateSlow 10s linear infinite;
-}
-@keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-.trait-icon {
-  font-size: 2rem;
-  margin-bottom: .4rem;
-  position: relative; z-index: 1;
-  filter: drop-shadow(0 0 8px rgba(255,255,255,.25));
-  display: inline-block;
-}
-.trait-name {
-  font-family: 'Playfair Display', serif;
-  font-size: .88rem; font-weight: 700;
-  color: var(--pink-light);
-  position: relative; z-index: 1;
-}
-.trait-desc {
-  font-size: .72rem;
-  color: rgba(255,255,255,.5);
-  line-height: 1.4;
-  margin: .3rem 0 .5rem;
-  position: relative; z-index: 1;
-}
-.trait-bar {
-  height: 3px;
-  background: rgba(255,255,255,.06);
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative; z-index: 1;
+.trait-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--gold);
 }
 .trait-fill {
   height: 100%; width: 0;
-  background: linear-gradient(90deg, var(--pink), var(--gold));
+  background: linear-gradient(90deg, var(--pink), var(--gold), var(--pink));
+  background-size: 200% 100%;
   border-radius: 10px;
-  transition: width 1.5s ease;
-  box-shadow: 0 0 10px var(--pink-glow);
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px var(--pink-glow);
+  animation: shimmer 2s infinite linear;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 /* ===== WISH ===== */
