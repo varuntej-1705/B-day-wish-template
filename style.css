@@ -488,10 +488,24 @@ body {
 }
 .wish-msg.show { opacity: 1; transform: none; }
 .wish-msg p {
-  font-size: clamp(.85rem, 3.5vw, 1rem);
-  color: rgba(255,255,255,.65);
-  line-height: 1.7;
-  margin-bottom: .5rem;
+  font-size: clamp(.95rem, 4vw, 1.1rem);
+  color: rgba(255,255,255,.85);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 15px rgba(255,255,255,0.1);
+  animation: floatText 4s ease-in-out infinite alternate;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+}
+@keyframes floatText {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+.wish-msg p:nth-child(even) {
+  animation-delay: 2s;
 }
 .highlight-gold {
   color: var(--gold);
