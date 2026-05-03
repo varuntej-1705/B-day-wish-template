@@ -459,6 +459,11 @@ body {
   animation: celebrate 1s ease infinite alternate;
   display: inline-block;
 }
+.wish-gif {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+}
 @keyframes celebrate {
   from { transform: scale(1) rotate(-8deg); }
   to { transform: scale(1.15) rotate(8deg); }

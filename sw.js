@@ -4,7 +4,8 @@ const ASSETS = [
   '/index.html',
   '/style.css',
   '/script.js',
-  '/manifest.json'
+  '/manifest.json',
+  '/output-onlinegiftools.gif'
 ];
 
 self.addEventListener('install', e => {
@@ -21,6 +22,6 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   e.respondWith(
-    caches.match(e.request).then(r => r || fetch(e.request))
+    fetch(e.request).catch(() => caches.match(e.request))
   );
 });
